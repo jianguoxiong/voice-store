@@ -1,12 +1,17 @@
 <template>
   <div id="app">
     <router-view/>
+	<nav-bar></nav-bar>
   </div>
 </template>
 
 <script>
+import NavBar from './components/NavBar'
 export default {
-  name: 'App',
+	name: 'App',
+	components:{
+		"nav-bar":NavBar
+	},
 	data(){
 		return{
 			isLoading:true,
@@ -18,7 +23,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 	html,body{
 		display: flex;
 		margin: 0;
@@ -28,6 +33,12 @@ export default {
 	#app{
 		width: 100%;
 		display: flex;
+		flex-direction:column;
+		.navBar{
+			position: fixed;
+			bottom: 0;
+			width: 100%;
+		}
 	}
 	}
 </style>

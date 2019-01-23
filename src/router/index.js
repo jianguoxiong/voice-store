@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import Login from '@/Login'
 import Index from '@/index'
+import NavBar from '@/components/NavBar'
 Vue.use(Router)
 
 export default new Router({

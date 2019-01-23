@@ -19,3 +19,9 @@ export const indexNav = (mstr) => {
         mstr:mstr
     }).then(res => res.data); 
 };
+//首页分类商品展示栏
+export const classify = (mstr) => { 
+    return axios.post(`${baseUrl}/module`, {
+        mstr:mstr
+    }).then(res => res.data); 
+};
