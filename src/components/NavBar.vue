@@ -16,9 +16,16 @@
 					{on_src:require('../assets/pulic/index_logo_s.png'),is_src:require('../assets/pulic/index_logo_s1.png'),is_on:true,text:'商城'},
 					{on_src:require('../assets/pulic/index_logo_h.png'),is_src:require('../assets/pulic/index_logo_h1.png'),is_on:false,text:'好礼'},
 					{on_src:require('../assets/pulic/index_logo_r.png'),is_src:require('../assets/pulic/index_logo_r1.png'),is_on:false,text:'个人'}
-				],
-				'previous':1                  //记录上一次点击
+				],                //记录上一次点击
 			}
+		},
+		created(){
+			this.navBar.map((item,x,array) => {
+				 return{
+					 is_on:item.is_on = false
+				 }
+			})
+			this.navBar[this.$store.state.previous].is_on = true
 		},
 		methods: {
 			toLink:function(index){
@@ -29,8 +36,15 @@
 						 }
 					})
 					this.navBar[index].is_on = true
-					this.previous = index
-					console.log(index)
+					localStorage.setItem('previous',index)
+					console.log(this.$store.state.previous)
+					if(index == 1){
+						this.$router.replace({name:'Index'})
+					}else if(index == 2){
+						this.$router.replace({name:'Coupon'})
+					}else if(index == 3){
+						this.$router.replace({name:'Center'})
+					}
 				}else{
 					console.log('不能重复选择')
 				}

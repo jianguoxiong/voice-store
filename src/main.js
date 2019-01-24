@@ -7,6 +7,7 @@ import router from './router'
 import './rem.js'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'//这里注意具体看使用的版本是否需要引入样式，以及具体位置。
+import store from './store'
 
 Vue.use(VueAwesomeSwiper, /* { default global options } */)
 Vue.prototype.$axios = axios
@@ -30,6 +31,7 @@ router.beforeEach((to, from, next) => {
 new Vue({
   el: '#app',
   router,
+	store,
   components: { App },
   template: '<App/>'
 })

@@ -64,6 +64,7 @@
 		},
 		created() {
 			document.getElementById('Loading').style.display="none";
+			this.$store.state.showBottomNav = true
 		},
 		mounted:function(){
 			let  mstr = sessionStorage.getItem('mstr')
@@ -158,6 +159,7 @@
 		.main_box_item{
 			box-shadow: 0 0.02rem 0.1rem 0.02rem #999;
 			margin-bottom: 0.2rem;
+			background: #fff;
 			@extend .main_box;
 			.main-title{
 				display: flex;

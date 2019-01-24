@@ -26,6 +26,9 @@
 				text:'',
 			};
 		},
+		created(){
+			// this.$store.state.showBottomNav = false
+		},
 		methods:{
 			login:function(){
 				if(this.admin === 'admin' && this.passWord == "123456"){

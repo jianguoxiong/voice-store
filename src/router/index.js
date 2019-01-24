@@ -4,6 +4,8 @@ import HelloWorld from '@/components/HelloWorld'
 import Login from '@/Login'
 import Index from '@/index'
 import NavBar from '@/components/NavBar'
+import Coupon from '@/coupon'
+import Center from '@/center'
 Vue.use(Router)
 
 export default new Router({
@@ -22,6 +24,16 @@ export default new Router({
       path: '/Login',
       name: 'Login',
       component: Login,
+		},
+		{
+			path: '/coupon',
+			name:'Coupon',
+			component:Coupon
+		},
+		{
+			path: '/center',
+			name:'Center',
+			component:Center			
 		}
   ]
 })

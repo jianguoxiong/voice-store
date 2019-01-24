@@ -1,7 +1,10 @@
 <template>
   <div id="app">
-    <router-view/>
-	<nav-bar></nav-bar>
+	<!-- keep-alive 缓存数据 -->
+	<keep-alive>
+		<router-view/>
+	</keep-alive>
+	<nav-bar v-if="$store.state.showBottomNav"></nav-bar>
   </div>
 </template>
 
