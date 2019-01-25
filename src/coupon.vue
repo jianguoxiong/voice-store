@@ -23,7 +23,7 @@
 			}
 		},
 		created(){
-			this.$store.state.showBottomNav = true
+			this.$store.state.showBottomNav = true;
 		}
 	}
 </script>

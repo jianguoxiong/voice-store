@@ -8,48 +8,44 @@
 </template>
 
 <script>
+	import {mapActions} from 'vuex'
 	export default{
 		data(){
 			return{
-				'navBar':[
-					{on_src:require('../assets/pulic/index_logo_t.png'),is_src:require('../assets/pulic/index_logo_t1.png'),is_on:false,text:'听一听'},
-					{on_src:require('../assets/pulic/index_logo_s.png'),is_src:require('../assets/pulic/index_logo_s1.png'),is_on:true,text:'商城'},
-					{on_src:require('../assets/pulic/index_logo_h.png'),is_src:require('../assets/pulic/index_logo_h1.png'),is_on:false,text:'好礼'},
-					{on_src:require('../assets/pulic/index_logo_r.png'),is_src:require('../assets/pulic/index_logo_r1.png'),is_on:false,text:'个人'}
-				],                //记录上一次点击
+                
 			}
 		},
 		created(){
-			this.navBar.map((item,x,array) => {
+			this.$store.state.navlist.map((item,x,array) => {
 				 return{
 					 is_on:item.is_on = false
 				 }
 			})
-			this.navBar[this.$store.state.previous].is_on = true
+			this.$store.state.navlist[this.$store.state.previous].is_on = true
+		},
+		computed:{
+			navBar(){
+				return this.$store.state.navlist
+			},
 		},
 		methods: {
 			toLink:function(index){
-				if(this.previous !== index){
-					let list_navBar = this.navBar.map((item,x,array) => {
-						 return{
-							 is_on:item.is_on = false
-						 }
-					})
-					this.navBar[index].is_on = true
-					localStorage.setItem('previous',index)
-					console.log(this.$store.state.previous)
-					if(index == 1){
-						this.$router.replace({name:'Index'})
-					}else if(index == 2){
-						this.$router.replace({name:'Coupon'})
-					}else if(index == 3){
-						this.$router.replace({name:'Center'})
-					}
-				}else{
-					console.log('不能重复选择')
-				}
-			}
+				this.$store.commit('toLink',index)
+			},
+// 			...mapActions([
+// 				"toLink"
+// 			])
 		},
+		updated: function () {
+			let index = sessionStorage.getItem('previous')
+				if(index == 1){
+					this.$router.replace({name:'Index'})
+				}else if(index == 2){
+					this.$router.replace({name:'Coupon'})
+				}else if(index == 3){
+					this.$router.replace({name:'Center'})
+				}
+		}
 	}
 </script>
 

@@ -22,6 +22,9 @@ export default {
 	},
 	created() {
 		document.getElementById('Loading').style.display="none";
+	},
+	watch:{
+		// console.log('父子组🗡'+this.$store.state.previous)
 	}
 }
 </script>

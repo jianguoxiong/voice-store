@@ -5,7 +5,7 @@
 		</div>
 		<div class="content">
 			<div class="navItem" v-for="item in center_nav">
-				 <router-link :to="{name:'Index'}">
+				 <router-link :to="{path:item.router}">
 					 <div>
 						 <img :src="item.src" alt="">
 						 <span>{{item.name}}</span>
@@ -22,7 +22,7 @@
 		data(){
 			return{
 				'center_nav':[
-					{src:require('./assets/center/card.png'),name:'我的卡包',router:'aaaaaa'},
+					{src:require('./assets/center/card.png'),name:'我的卡包',router:'coupon'},
 					{src:require('./assets/center/order.png'),name:'我的订单',router:'aaaaaa'},
 					{src:require('./assets/center/car.png'),name:'购物车',router:'aaaaaa'},
 					{src:require('./assets/center/address.png'),name:'收货地址',router:'aaaaaa'},
@@ -32,6 +32,20 @@
 		},
 		created() {
 			this.$store.state.showBottomNav = true
+		},
+		watch:{
+			'$route' (to, from,next) {
+				console.log(to.fullPath)
+// 				if(to.fullPath === '/coupon'){
+// 					sessionStorage.setItem('previous',2)
+// 				}
+// 				this.$store.state.navlist.map((item,x,array) => {
+// 					 return{
+// 						 is_on:item.is_on = false
+// 					 }
+// 				})
+// 				this.$store.state.navlist[2].is_on = true
+			}
 		}
 	}
 </script>

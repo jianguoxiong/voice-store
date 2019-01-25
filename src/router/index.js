@@ -34,6 +34,7 @@ export default new Router({
 			path: '/center',
 			name:'Center',
 			component:Center			
-		}
+		},
+		{path:'*',redirect:'/'}
   ]
 })
